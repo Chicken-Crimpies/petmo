@@ -30,14 +30,14 @@ class Pet {
 
   Map<String, dynamic> toMap() {
     return {
-      'guid': guid,
-      'created': created,
+      'guid': guid.toString(),
+      'created': created.toString(),
       'name': name,
       'happiness': getAttributeByKey("happiness")?.current,
       'health': getAttributeByKey("health")?.current,
       'hunger': getAttributeByKey("hunger")?.current,
       'walk': getAttributeByKey("walk")?.current,
-      'local_pet': isLocalPet,
+      'local_pet': isLocalPet == true ? 1 : 0,
     };
   }
 

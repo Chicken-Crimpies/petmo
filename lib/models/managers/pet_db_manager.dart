@@ -13,6 +13,8 @@ class PetDBManager extends AbstractManager {
   static Future<void> insertPet(Pet pet) async {
     final db = await DBHandler.database;
 
+    if (db == null) print('[LOG} db in null');
+
     await db.insert(
       'pets',
       pet.toMap(),
@@ -48,7 +50,7 @@ class PetDBManager extends AbstractManager {
 
     return List.generate(maps.length, (i) {
       return Pet(
-        guid: maps[i]['guid'],
+        guid: Guid(maps[i]['guid']),
         created: DateTime.parse(maps[i]['created']),
         attributes: PetAttribute.buildAttributesFromDb(maps[i]),
         name: maps[i]['name'],

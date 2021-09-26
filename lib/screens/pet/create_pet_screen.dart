@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_pet/screens/pet/create_pet_form_widget.dart';
 
 class CreatePetScreen extends StatelessWidget {
   @override
@@ -7,11 +8,13 @@ class CreatePetScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('VirtualPet'),
       ),
-      body: ListView(
-        children: [
-
-        ],
-      )
+      body: const CreatePetForm(),
     );
+    // body: Center(
+    //     child: RaisedButton(
+    //   onPressed: () {},
+    //   child: const Text('Create your pet'),
+    //   elevation: 5,
+    // )));
   }
 }

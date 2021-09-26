@@ -11,7 +11,7 @@ class DBHandler {
       join(await getDatabasesPath(), 'vp_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE pets(guid BLOB PRIMARY KEY, '
+          'CREATE TABLE pets(guid TEXT PRIMARY KEY, '
               'created TEXT, '
               'name TEXT, '
               'happiness INTEGER, '

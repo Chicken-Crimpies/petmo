@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_pet/models/db/db_handler.dart';
+import 'package:virtual_pet/models/managers/pet_db_manager.dart';
+import 'package:virtual_pet/models/managers/pet_manager.dart';
+import 'package:virtual_pet/models/pet/pet.dart';
 import 'package:virtual_pet/screens/pet/create_pet_screen.dart';
 
 import 'style.dart';
 
-const CreatePetRoute ='/';
+const CreatePetRoute = '/';
 
 class VirtualPet extends StatelessWidget {
   const VirtualPet({Key? key}) : super(key: key);
 
+  static final petDBManager = PetDBManager();
+  static final petManager = PetManager(List.empty(growable: true));
+
   @override
   Widget build(BuildContext context) {
+    DBHandler.initDb();
+    PetDBManager.retrievePets().then((value) {
+      petManager.setAllPets(value);
+      for (Pet pet in value) {
+        if (pet.isLocalPet) {
+          petManager.setLocalPet(pet);
+          break;
+        }
+      }
+      print('[LOG] Local pet: ' + petManager.pet.name);
+    });
     return MaterialApp(onGenerateRoute: _routes(), theme: _theme());
   }
 
@@ -27,7 +45,7 @@ class VirtualPet extends StatelessWidget {
         default:
           return null;
       }
-      // return MaterialPageRoute(builder: (BuildContext context) => screen);
+      return MaterialPageRoute(builder: (BuildContext context) => screen);
     };
   }
 
