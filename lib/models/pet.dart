@@ -3,10 +3,11 @@ import 'package:virtual_pet/models/pet_attribute.dart';
 
 class Pet {
   final Guid guid;
+  final DateTime created;
   final List<PetAttribute> attributes;
   String name;
 
-  Pet(this.guid, this.name, this.attributes);
+  Pet(this.guid, this.created, this.attributes, this.name);
 
   PetAttribute? getAttributeByKey(String key) {
     for (PetAttribute petAttribute in attributes) {
