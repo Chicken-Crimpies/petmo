@@ -13,7 +13,8 @@ class CreatePetFormState extends State<CreatePetForm> {
     return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextFormField(
             controller: _controller,

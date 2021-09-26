@@ -8,13 +8,9 @@ class CreatePetScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('VirtualPet'),
       ),
-      body: const CreatePetForm(),
+      body: const Center(
+        child: CreatePetForm(),
+      ),
     );
-    // body: Center(
-    //     child: RaisedButton(
-    //   onPressed: () {},
-    //   child: const Text('Create your pet'),
-    //   elevation: 5,
-    // )));
   }
 }

@@ -52,7 +52,15 @@ class VirtualPet extends StatelessWidget {
   ThemeData _theme() {
     return ThemeData(
         appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xffBEE6CE),
+          foregroundColor: Color(0xff4F9D69),
           textTheme: TextTheme(headline1: AppBarTextStyle),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              primary: const Color(0xffBEE6CE),
+              onPrimary: const Color(0xff4F9D69),
+            )
         ),
         textTheme: TextTheme(
           headline1: TitleTextStyle,

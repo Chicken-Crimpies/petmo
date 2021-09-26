@@ -75,6 +75,28 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: HoneyCute
+      fonts:
+        - asset: assets/fonts/HoneyCute.otf
+          weight: 300
+    - family: Free
+      fonts:
+        - asset: assets/fonts/FreeSans.ttf
+          style: normal
+          weight: 300
+        - asset: assets/fonts/FreeSansOblique.ttf
+          style: italic
+          weight: 300
+    - family: FreeSansBold
+      fonts:
+      - asset: assets/fonts/FreeSansBold.ttf
+        style: normal
+        weight: 500
+      - asset: assets/fonts/FreeSansBoldOblique.ttf
+        style: italic
+        weight: 500
+
   # fonts:
   #   - family: Schyler
   #     fonts:
