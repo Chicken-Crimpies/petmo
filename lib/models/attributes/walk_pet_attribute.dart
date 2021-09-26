@@ -1,4 +1,4 @@
-import 'package:virtual_pet/models/pet_attribute.dart';
+import 'package:virtual_pet/models/attributes/abstract_pet_attribute.dart';
 
 class WalkPetAttribute extends PetAttribute {
 
