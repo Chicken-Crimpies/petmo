@@ -30,10 +30,19 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Database storage
+  sqflite: ^2.0.0+3
+
+  # Format dateTime
+  intl: ^0.17.0
+
+  # Display TODOs in grid
+  flutter_staggered_grid_view: ^0.4.0-nullsafety.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_guid: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +82,28 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: HoneyCute
+      fonts:
+        - asset: assets/fonts/HoneyCute.otf
+          weight: 300
+    - family: Free
+      fonts:
+        - asset: assets/fonts/FreeSans.ttf
+          style: normal
+          weight: 300
+        - asset: assets/fonts/FreeSansOblique.ttf
+          style: italic
+          weight: 300
+    - family: FreeSansBold
+      fonts:
+        - asset: assets/fonts/FreeSansBold.ttf
+          style: normal
+          weight: 500
+        - asset: assets/fonts/FreeSansBoldOblique.ttf
+          style: italic
+          weight: 500
+
   # fonts:
   #   - family: Schyler
   #     fonts:
