@@ -1,4 +1,4 @@
-import 'package:virtual_pet/models/attributes/abstract_pet_attribute.dart';
+import 'package:petmo/models/attributes/abstract_pet_attribute.dart';
 
 class ExercisePetAttribute extends PetAttribute {
 
