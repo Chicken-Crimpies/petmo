@@ -1,4 +1,4 @@
-package gg.steve.virtual_pet;
+package com.chickencrimpies.petmo;
 
 import io.flutter.embedding.android.FlutterActivity;
 

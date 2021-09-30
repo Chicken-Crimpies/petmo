@@ -29,8 +29,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sqflite:
-  path:
+
+  # Database storage
+  sqflite: ^2.0.0+3
+
+  # Format dateTime
+  intl: ^0.17.0
+
+  # Display TODOs in grid
+  flutter_staggered_grid_view: ^0.4.0-nullsafety.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -90,12 +97,12 @@ flutter:
           weight: 300
     - family: FreeSansBold
       fonts:
-      - asset: assets/fonts/FreeSansBold.ttf
-        style: normal
-        weight: 500
-      - asset: assets/fonts/FreeSansBoldOblique.ttf
-        style: italic
-        weight: 500
+        - asset: assets/fonts/FreeSansBold.ttf
+          style: normal
+          weight: 500
+        - asset: assets/fonts/FreeSansBoldOblique.ttf
+          style: italic
+          weight: 500
 
   # fonts:
   #   - family: Schyler

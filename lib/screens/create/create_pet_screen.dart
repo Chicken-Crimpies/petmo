@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_pet/screens/pet/create_pet_form_widget.dart';
+import 'package:virtual_pet/screens/create/create_pet_form_widget.dart';
 
 class CreatePetScreen extends StatelessWidget {
   @override
@@ -11,6 +11,7 @@ class CreatePetScreen extends StatelessWidget {
       body: const Center(
         child: CreatePetForm(),
       ),
+      backgroundColor: Color(0xffE7ECEF),
     );
   }
 }

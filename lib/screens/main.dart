@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_pet/screens/virtual_pet.dart';
+import 'package:virtual_pet/screens/petmo.dart';
 
-void main() => runApp(VirtualPet());
+void main() => runApp(Petmo());

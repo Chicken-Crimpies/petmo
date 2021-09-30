@@ -1,8 +1,8 @@
 import 'package:virtual_pet/models/attributes/abstract_pet_attribute.dart';
 
-class WalkPetAttribute extends PetAttribute {
+class ExercisePetAttribute extends PetAttribute {
 
-  WalkPetAttribute(int current) : super("walk", 0, current, 100);
+  ExercisePetAttribute(int current) : super('exercise', 0, current, 100);
 
   @override
   void tick() {

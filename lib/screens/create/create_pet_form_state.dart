@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:virtual_pet/models/managers/pet_manager.dart';
-import 'package:virtual_pet/screens/pet/create_pet_form_widget.dart';
+import 'package:virtual_pet/screens/create/create_pet_form_widget.dart';
 
 class CreatePetFormState extends State<CreatePetForm> {
   final _formKey = GlobalKey<FormState>();
@@ -41,7 +40,7 @@ class CreatePetFormState extends State<CreatePetForm> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Creating your pet')),
                   );
-                  PetManager.createNewPet(value);
+                  // PetManager.createNewPet(value);
                 }
               },
               child: const Text('Adopt Your Virtual Pet'),
