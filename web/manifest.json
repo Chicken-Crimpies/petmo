@@ -1,6 +1,6 @@
 {
-    "name": "virtual_pet",
-    "short_name": "virtual_pet",
+    "name": "petmo",
+    "short_name": "petmo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

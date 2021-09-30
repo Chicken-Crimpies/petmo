@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="gg.steve.virtual_pet">
+    package="com.chickencrimpies.petmo">
    <application
         android:label="virtual_pet"
         android:icon="@mipmap/ic_launcher">
