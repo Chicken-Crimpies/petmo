@@ -29,19 +29,22 @@ class Petmo extends StatelessWidget {
 
   ThemeData _theme() {
     return ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff274C77),
-          foregroundColor: Colors.white,
-          textTheme: TextTheme(headline1: AppBarTextStyle),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-          primary: const Color(0xff274C77),
-          onPrimary: const Color(0xffA3CEF1),
-        )),
-        textTheme: TextTheme(
-          headline1: TitleTextStyle,
-          bodyText1: Body1TextStyle,
-        ));
+      fontFamily: DefaultFontFamily,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: PrimaryAccentColor,
+        foregroundColor: Colors.white,
+        textTheme: TextTheme(headline1: AppBarTextStyle),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+        primary: PrimaryAccentColor,
+        onPrimary: TertiaryAccentColor,
+      )),
+      textTheme: TextTheme(
+        headline1: TitleTextStyle,
+        bodyText1: Body1TextStyle,
+      ),
+      // backgroundColor: DarkAccentColor,
+    );
   }
 }
