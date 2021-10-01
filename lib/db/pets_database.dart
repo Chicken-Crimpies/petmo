@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:virtual_pet/models/pet/pet_db_object.dart';
+import 'package:petmo/models/pet/pet.dart';
 
 class PetsDatabase {
   static final PetsDatabase instance = PetsDatabase._init();

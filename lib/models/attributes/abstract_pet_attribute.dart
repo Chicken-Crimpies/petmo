@@ -1,11 +1,11 @@
-import 'package:virtual_pet/models/attributes/happiness_pet_attribute.dart';
-import 'package:virtual_pet/models/attributes/health_pet_attribute.dart';
-import 'package:virtual_pet/models/attributes/hunger_pet_attribute.dart';
-import 'package:virtual_pet/models/attributes/exercise_pet_attribute.dart';
+import 'package:petmo/models/attributes/happiness_pet_attribute.dart';
+import 'package:petmo/models/attributes/health_pet_attribute.dart';
+import 'package:petmo/models/attributes/hunger_pet_attribute.dart';
+import 'package:petmo/models/attributes/exercise_pet_attribute.dart';
 
 import 'dart:math';
 
-import 'package:virtual_pet/models/pet/pet_db_object.dart';
+import 'package:petmo/models/pet/pet.dart';
 
 abstract class PetAttribute {
   final String name;

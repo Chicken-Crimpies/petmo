@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:virtual_pet/db/pets_database.dart';
-import 'package:virtual_pet/models/pet/pet_db_object.dart';
-import 'package:virtual_pet/screens/pet/pet_create_screen.dart';
+import 'package:intl/intl.dart';
+import 'package:petmo/db/pets_database.dart';
+import 'package:petmo/models/pet/pet.dart';
+import 'package:petmo/screens/create/pet_create_screen.dart';
 
 class PetScreen extends StatefulWidget {
   @override
@@ -38,11 +39,16 @@ class _PetScreenState extends State<PetScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text(
             'Petmo',
+            textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24),
           ),
-          actions: [Icon(Icons.search), SizedBox(width: 12)],
+          // actions: [
+          //   Icon(Icons.airline_seat_legroom_reduced_sharp),
+          //   SizedBox(width: 12)
+          // ],
         ),
         body: Center(
           child: isLoading
@@ -53,40 +59,30 @@ class _PetScreenState extends State<PetScreen> {
         ),
       );
 
-  Widget buildPet(Pet pet) => Scaffold(
-        body: ListView(
-          children: pet.attributes
-              .map((attribute) => ListView(
-                    children: [
-                      Text(attribute.name),
-                      Text(attribute.current.toString()),
-                    ],
-                  ))
-              .toList(),
-        ),
+  Widget buildPet(Pet pet) => Padding(
+        padding: EdgeInsets.all(12),
+        child: ListView(padding: EdgeInsets.symmetric(vertical: 8), children: [
+          Text(
+            pet.name,
+          ),
+          SizedBox(height: 8),
+          Text(
+            DateFormat.yMMMd().format(pet.created),
+          ),
+          SizedBox(height: 8),
+          Text(
+            pet.getAttributeCurrentByKey('exercise').toString(),
+          ),
+          SizedBox(height: 8),
+          Text(
+            pet.getAttributeCurrentByKey('happiness').toString(),
+          ),          SizedBox(height: 8),
+          Text(
+            pet.getAttributeCurrentByKey('health').toString(),
+          ),          SizedBox(height: 8),
+          Text(
+            pet.getAttributeCurrentByKey('hunger').toString(),
+          ),
+        ]),
       );
 }
-//   Pet pet;
-//
-//   PetScreen(this.pet, {Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("VirtualPet"),
-//       ),
-//       body: ListView(
-//         children: pet.attributes
-//             .map((attribute) => ListView(
-//                   children: [
-//                     Text(attribute.name),
-//                     Text(attribute.current.toString()),
-//                   ],
-//                 ))
-//             .toList(),
-//       ),
-//       backgroundColor: Color(0xffBEE6CE),
-//     );
-//   }
-// }
