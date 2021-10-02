@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:path/path.dart';
+import 'package:petmo/models/pet/pet.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:virtual_pet/models/pet/pet_db_object.dart';
 
 class PetsDatabase {
   static final PetsDatabase instance = PetsDatabase._init();
@@ -19,6 +19,7 @@ class PetsDatabase {
 
   Future<Database> _initDb(String filePath) async {
     final dbPath = await getDatabasesPath();
+    print('[LOG] ' + dbPath);
     final path = join(dbPath, filePath);
     return await openDatabase(path, version: 1, onCreate: _createDb);
   }
