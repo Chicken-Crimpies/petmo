@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-const LargeTextSize = 26.0;
-const MediumTextSize = 20.0;
-const BodyTextSize = 16.0;
+const LargeTextSize = 28.0;
+const MediumTextSize = 23.0;
+const BodyTextSize = 18.0;
 
 const String DefaultFontFamily = 'FreeSans';
 
 const AppBarTextStyle = TextStyle(
   // fontFamily: DefaultFontFamily,
-  fontWeight: FontWeight.w300,
+  fontWeight: FontWeight.w600,
   fontSize: MediumTextSize,
   color: Colors.white,
 );
@@ -28,7 +28,7 @@ const TitleTextStyle = TextStyle(
 
 const Body1TextStyle = TextStyle(
   // fontFamily: FontNameDefault,
-  fontWeight: FontWeight.w300,
+  fontWeight: FontWeight.w400,
   fontSize: BodyTextSize,
-  color: Colors.black,
+  color: DarkAccentColor,
 );

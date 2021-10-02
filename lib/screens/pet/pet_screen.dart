@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
+import 'package:petmo/widgets/speed_dial_nav_widget.dart';
 
 import '../style.dart';
 
@@ -36,7 +37,7 @@ class _PetScreenState extends State<PetScreen> {
           title: const Text(
             'Petmo',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24),
+            style: AppBarTextStyle,
           ),
         ),
         body: Center(
@@ -112,31 +113,27 @@ class _PetScreenState extends State<PetScreen> {
       );
 
   Widget buildBottomNav() => Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: SecondaryAccentColor,
-          onPressed: () {},
-          child: Icon(Icons.adjust),
-        ),
+        floatingActionButton: SpeedDialNavWidget(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         bottomNavigationBar: BottomAppBar(
             color: PrimaryAccentColor,
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             notchMargin: 5,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.scatter_plot_outlined,
                     color: LightAccentColor,
                   ),
                   onPressed: () {},
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: 90),
+                  padding: const EdgeInsets.only(right: 90),
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.people,
                       color: Colors.white,
                     ),

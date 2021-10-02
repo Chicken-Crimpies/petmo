@@ -30,6 +30,7 @@ class Petmo extends StatelessWidget {
   ThemeData _theme() {
     return ThemeData(
       fontFamily: DefaultFontFamily,
+      scaffoldBackgroundColor: LightAccentColor,
       appBarTheme: const AppBarTheme(
         backgroundColor: PrimaryAccentColor,
         foregroundColor: Colors.white,
