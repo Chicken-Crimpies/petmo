@@ -4,8 +4,10 @@ import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/attributes/abstract_pet_attribute.dart';
 import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/widgets/pet_create_form_widget.dart';
+import 'package:slide_button/slide_button.dart';
 
 import '../petmo.dart';
+import '../style.dart';
 
 class PetCreateScreen extends StatefulWidget {
   final Pet? pet;
@@ -55,36 +57,48 @@ class _PetCreateScreenState extends State<PetCreateScreen> {
   Widget build(BuildContext context) {
     final isFormValid = name.isNotEmpty;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: createPet,
-        child: Icon(Icons.add),
-        tooltip: 'Create',
-        backgroundColor: isFormValid ? const Color(0xff274C77) : const Color(0xff8B8C89),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      body: Form(
-        key: _formKey,
-        child: PetCreateFormWidget(
-          name: name,
-          onChangedName: (name) => setState(() => this.name = name),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: createPet,
+      //   child: Icon(Icons.add),
+      //   tooltip: 'Create',
+      //   backgroundColor: isFormValid ? PrimaryAccentColor : DarkAccentColor,
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Create Your Pet',
+              style: TitleTextStyle,
+            ),
+            SizedBox(height: 60),
+            Form(
+              key: _formKey,
+              child: PetCreateFormWidget(
+                name: name,
+                onChangedName: (name) => setState(() => this.name = name),
+              ),
+            ),
+            buildSlider(isFormValid),
+          ],
         ),
       ),
     );
   }
 
-  // Widget buildCreateButton() {
-  //   final isFormValid = name.isNotEmpty;
-  //
-  //   return Padding(
-  //     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-  //     child: ElevatedButton(
-  //       style: ElevatedButton.styleFrom(
-  //         onPrimary: Colors.white,
-  //         primary: isFormValid ? null : Colors.grey.shade700,
-  //       ),
-  //       onPressed: createPet,
-  //       child: Text('Create'),
-  //     ),
-  //   );
-  // }
+  Widget buildSlider(bool isFormValid) => SlideButton(
+        height: 64,
+        slidingChild: Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: const Icon(Icons.chevron_right)),
+        ),
+        slidingBarColor: isFormValid ? PrimaryAccentColor : DarkAccentColor,
+        slideDirection: SlideDirection.RIGHT,
+        isDraggable: isFormValid,
+        onButtonSlide: (position) => position > 0.99 ? createPet() : false,
+      );
 }
