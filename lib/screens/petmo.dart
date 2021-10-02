@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:petmo/screens/pet/pet_detail_screen.dart';
 import 'package:petmo/screens/pet/pet_screen.dart';
 
 import 'style.dart';
 
 const PetScreenRoute = '/';
+const PetDetailScreenRoute = '/pet_detail';
 
 class Petmo extends StatelessWidget {
   const Petmo({Key? key}) : super(key: key);
@@ -19,6 +21,10 @@ class Petmo extends StatelessWidget {
       switch (settings.name) {
         case PetScreenRoute:
           screen = PetScreen();
+          break;
+        case PetDetailScreenRoute:
+          final arguments = settings.arguments as Map<String, dynamic>;
+          screen = PetDetailScreen(pet: arguments['pet']);
           break;
         default:
           return null;
