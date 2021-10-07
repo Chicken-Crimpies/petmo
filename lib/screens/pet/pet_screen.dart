@@ -48,9 +48,9 @@ class _PetScreenState extends State<PetScreen> {
                           // Expanded(
                           //   child: buildPet(pet),
                           // ),
-                          // const Center(
-                          //   child: ImageBanner('assets/images/logo.jpg'),
-                          // ),
+                          const Center(
+                            child: ImageBanner('assets/images/kangaroo_idle.gif'),
+                          ),
                           Expanded(
                             child: BottomNavWidget(pet: pet),
                           ),
