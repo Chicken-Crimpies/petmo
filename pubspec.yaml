@@ -31,23 +31,32 @@ dependencies:
     sdk: flutter
 
   # Database storage
-  sqflite: ^2.0.0+3
+  sqflite: ^2.0.0+4
 
   # Format dateTime
   intl: ^0.17.0
 
   # Display TODOs in grid
-  flutter_staggered_grid_view: ^0.4.0-nullsafety.3
+  flutter_staggered_grid_view: ^0.4.0
 
   # Slide button
-  slide_button: ^0.2.8
+  slide_button: ^0.2.9
 
   # Speed dial button
-  flutter_speed_dial: ^4.4.0
+  flutter_speed_dial: ^4.4.0+1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.3
+
+  # Firebase
+  firebase_core: ^1.7.0
+
+  firebase_analytics: ^8.3.3
+
+  firebase_auth: ^3.1.2
+
+  cloud_firestore: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +67,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
