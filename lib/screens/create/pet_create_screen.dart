@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/attributes/abstract_pet_attribute.dart';
 import 'package:petmo/models/pet/pet.dart';
+import 'package:petmo/screens/create/image_banner.dart';
 import 'package:petmo/widgets/pet_create_form_widget.dart';
 import 'package:slide_button/slide_button.dart';
 
@@ -69,11 +70,13 @@ class _PetCreateScreenState extends State<PetCreateScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ImageBanner('assets/images/logo.jpg'),
+            SizedBox(height: 20),
             const Text(
               'Create Your Pet',
               style: TitleTextStyle,
             ),
-            SizedBox(height: 60),
+            SizedBox(height: 20),
             Form(
               key: _formKey,
               child: PetCreateFormWidget(

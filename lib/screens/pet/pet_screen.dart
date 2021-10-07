@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/pet/pet.dart';
+import 'package:petmo/screens/create/image_banner.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
-import 'package:petmo/screens/pet/pet_detail_screen.dart';
 import 'package:petmo/widgets/bottom_nav_widget.dart';
-import 'package:petmo/widgets/speed_dial_nav_widget.dart';
 
 import '../style.dart';
 
@@ -34,14 +33,6 @@ class _PetScreenState extends State<PetScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            'Petmo',
-            textAlign: TextAlign.center,
-            style: AppBarTextStyle,
-          ),
-        ),
         body: Center(
           child: isLoading
               ? const CircularProgressIndicator()
@@ -52,14 +43,77 @@ class _PetScreenState extends State<PetScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                           Expanded(
-                            child: buildPet(pet),
+                            child: buildAppBar(),
                           ),
+                          // Expanded(
+                          //   child: buildPet(pet),
+                          // ),
+                          // const Center(
+                          //   child: ImageBanner('assets/images/logo.jpg'),
+                          // ),
                           Expanded(
                             child: BottomNavWidget(pet: pet),
                           ),
                           // buildBottomNav(),
                         ]),
         ),
+      );
+
+  Widget buildAppBar() => Scaffold(
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 5.0),
+              child: FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: Color(0xff584B53),
+                foregroundColor: Colors.white,
+                child: const Icon(Icons.supervisor_account),
+              ),
+            ),
+            buildPetName(pet),
+            Container(
+              margin: const EdgeInsets.only(right: 30.0, top: 5.0),
+              child: SpeedDial(
+                icon: Icons.menu,
+                activeIcon: Icons.close,
+                backgroundColor: PrimaryAccentColor,
+                foregroundColor: Colors.white,
+                activeBackgroundColor: Colors.white,
+                activeForegroundColor: PrimaryAccentColor,
+                buttonSize: 56.0,
+                visible: true,
+                direction: SpeedDialDirection.down,
+                curve: Curves.easeInCubic,
+                overlayColor: LightAccentColor,
+                overlayOpacity: 0.5,
+                elevation: 5.0,
+                shape: CircleBorder(),
+                children: [
+                  SpeedDialChild(
+                    child: const Icon(Icons.person),
+                    backgroundColor: Colors.white,
+                    foregroundColor: PrimaryAccentColor,
+                    label: 'Profile',
+                    labelBackgroundColor: Colors.white,
+                    labelStyle: Body1TextStyle,
+                  ),
+                  SpeedDialChild(
+                    child: const Icon(Icons.settings),
+                    backgroundColor: Colors.white,
+                    foregroundColor: PrimaryAccentColor,
+                    label: 'Settings',
+                    labelBackgroundColor: Colors.white,
+                    labelStyle: Body1TextStyle,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       );
 
   Future refreshPet() async {
@@ -71,46 +125,12 @@ class _PetScreenState extends State<PetScreen> {
     setState(() => isLoading = false);
   }
 
-  Widget buildPet(Pet pet) => Padding(
+  Widget buildPetName(Pet pet) => Padding(
         padding: const EdgeInsets.all(12),
-        child: ListView(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            children: [
-              Text(
-                pet.name,
-                style: TitleTextStyle,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Created: ' + DateFormat.yMMMd().format(pet.created),
-              ),
-              SizedBox(height: 20),
-              Text('Attributes'),
-              SizedBox(height: 8),
-              Text(
-                'Exercise: ' +
-                    pet.getAttributeCurrentByKey('exercise').toString() +
-                    ' / 100',
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Happiness: ' +
-                    pet.getAttributeCurrentByKey('happiness').toString() +
-                    ' / 100',
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Health: ' +
-                    pet.getAttributeCurrentByKey('health').toString() +
-                    ' / 100',
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Hunger: ' +
-                    pet.getAttributeCurrentByKey('hunger').toString() +
-                    ' / 100',
-              ),
-            ]),
+        child: Text(
+          pet.name,
+          style: TitleTextStyle,
+          textAlign: TextAlign.center,
+        ),
       );
 }

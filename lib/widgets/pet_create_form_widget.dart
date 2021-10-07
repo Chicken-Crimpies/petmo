@@ -38,7 +38,7 @@ class PetCreateFormWidget extends StatelessWidget {
         cursorColor: SecondaryAccentColor,
         decoration: const InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: SecondaryAccentColor),
+            borderSide: BorderSide(color: PrimaryAccentColor),
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
           focusedBorder: OutlineInputBorder(
@@ -47,15 +47,15 @@ class PetCreateFormWidget extends StatelessWidget {
           ),
           labelText: 'Enter A Name',
           labelStyle: TextStyle(
-            color: SecondaryAccentColor,
+            color: PrimaryAccentColor,
           ),
           floatingLabelStyle: TextStyle(
-            color: SecondaryAccentColor,
+            color: PrimaryAccentColor,
           ),
-          prefixIcon: Icon(Icons.animation),
-          prefixStyle: TextStyle(
-            color: SecondaryAccentColor,
-          ),
+          // prefixIcon: Icon(Icons.animation),
+          // prefixStyle: TextStyle(
+          //   color: SecondaryAccentColor,
+          // ),
         ),
         validator: (name) => name != null && name.isEmpty
             ? 'The name cannot be empty'
