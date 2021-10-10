@@ -1,19 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/widgets/speed_dial_nav_widget.dart';
 
 class BottomNavWidget extends StatelessWidget {
-  final Pet pet;
-
-  const BottomNavWidget({Key? key, required this.pet}) : super(key: key);
+  const BottomNavWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        floatingActionButton: Container(
-          // margin: EdgeInsets.only(bottom: 10.0),
-          child: SpeedDialNavWidget(),
-        ),
+  Widget build(BuildContext context) => const Scaffold(
+        floatingActionButton: SpeedDialNavWidget(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         // bottomNavigationBar: BottomAppBar(
         //     color: PrimaryAccentColor,

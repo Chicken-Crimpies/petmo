@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/screens/create/image_banner.dart';
-import 'package:petmo/screens/create/pet_create_screen.dart';
 import 'package:petmo/screens/pet/pet_screen.dart';
 
 import '../style.dart';
@@ -38,9 +38,12 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
         'name': userData['name'],
       });
 
+      UserDetails.name = userData['name'];
+      UserDetails.email = userData['email'];
+      UserDetails.profilePictureUrl = userData['picture']['data']['url'];
+
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => PetScreen()),
-          (route) => false);
+          MaterialPageRoute(builder: (_) => PetScreen()), (route) => false);
     } on FirebaseAuthException catch (exception) {
       String content = '';
       switch (exception.code) {

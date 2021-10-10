@@ -4,6 +4,8 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:petmo/screens/style.dart';
 
 class SpeedDialNavWidget extends StatelessWidget {
+  const SpeedDialNavWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) => SpeedDial(
         icon: Icons.adjust,

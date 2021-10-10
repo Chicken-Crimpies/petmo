@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:petmo/screens/pet/pet_detail_screen.dart';
 import 'package:petmo/screens/pet/pet_screen.dart';
 
 import 'login/facebook_login_screen.dart';
@@ -18,14 +17,15 @@ class Petmo extends StatelessWidget {
     return FutureBuilder(
         future: _initialization,
         builder: (context, snapshot) {
-
           if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          return MaterialApp(onGenerateRoute: _routes(), theme: _theme(), home: FacebookLoginScreen());
-        }
-    );
+          return MaterialApp(
+              onGenerateRoute: _routes(),
+              theme: _theme(),
+              home: const FacebookLoginScreen());
+        });
   }
 
   RouteFactory _routes() {
@@ -38,10 +38,6 @@ class Petmo extends StatelessWidget {
           break;
         case PetScreenRoute:
           screen = PetScreen();
-          break;
-        case PetDetailScreenRoute:
-          final arguments = settings.arguments as Map<String, dynamic>;
-          screen = PetDetailScreen(pet: arguments['pet']);
           break;
         default:
           return null;
