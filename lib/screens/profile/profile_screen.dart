@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Profile',
+              'Petmo Profile',
               style: TitleTextStyle,
             ),
             SizedBox(height: 20),
@@ -39,6 +39,11 @@ class ProfileScreen extends StatelessWidget {
               UserDetails.name,
               style: TitleTextStyle,
             ),
+            SizedBox(height: 20),
+            Text(
+              'Pet Care Streak: 10🔥',
+              style: TitleTextStyle,
+            )
           ],
         )),
         floatingActionButton: FloatingActionButton(
