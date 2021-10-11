@@ -5,6 +5,7 @@ import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/screens/create/image_banner.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
+import 'package:petmo/screens/profile/profile_screen.dart';
 import 'package:petmo/widgets/bottom_nav_widget.dart';
 
 import '../style.dart';
@@ -48,11 +49,11 @@ class _PetScreenState extends State<PetScreen> {
                           // Expanded(
                           //   child: buildPet(pet),
                           // ),
-                          // const Center(
-                          //   child: ImageBanner('assets/images/logo.jpg'),
-                          // ),
-                          Expanded(
-                            child: BottomNavWidget(pet: pet),
+                          const Center(
+                            child: ImageBanner('assets/images/kangaroo_idle.gif'),
+                          ),
+                          const Expanded(
+                            child: BottomNavWidget(),
                           ),
                           // buildBottomNav(),
                         ]),
@@ -99,6 +100,10 @@ class _PetScreenState extends State<PetScreen> {
                     label: 'Profile',
                     labelBackgroundColor: Colors.white,
                     labelStyle: Body1TextStyle,
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const ProfileScreen()));
+                    }
                   ),
                   SpeedDialChild(
                     child: const Icon(Icons.settings),
