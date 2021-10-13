@@ -23,18 +23,18 @@
 
 ### Prototypes & Evaluation
 - [Low Fidelity](https://github.com/Chicken-Crimpies/petmo/wiki/Low-Fidelity-Prototype)
-- [Medium Fidelity]()
-- [High Fidelity]()
+- [Medium Fidelity](https://github.com/Chicken-Crimpies/petmo/wiki/Medium-Fidelity)
+- [High Fidelity](https://github.com/Chicken-Crimpies/petmo/wiki/High-Fidelity)
 
 ### Meetings and Stand-Ups
 - [Week 8 Stand-Up](https://github.com/Chicken-Crimpies/petmo/wiki/Week-8-Stand-Up)
 - [Week 10 Stand-Up](https://github.com/Chicken-Crimpies/petmo/wiki/Week-10-Stand-Up)
-- [Weekly Meeting Minutes](https://github.com/Chicken-Crimpies/petmo/wiki/Experience-Requirements)
+- [Weekly Meeting Minutes](https://github.com/Chicken-Crimpies/petmo/wiki/Weekly-Minutes)
 
 ### Research
 - [Consolidation of Research](https://github.com/Chicken-Crimpies/petmo/wiki/Consolidation-of-Research)
-- [Interview Process and Insights]()
-- [Observational Research](https://github.com/Chicken-Crimpies/petmo/wiki/Interview-Process-and-Insights)
+- [Interview Process and Insights](https://github.com/Chicken-Crimpies/petmo/wiki/Interview-Process-and-Insights)
+- [Observational Research](https://github.com/Chicken-Crimpies/petmo/wiki/Observational-Research)
 - [Evaluation of Existing Solutions](https://github.com/Chicken-Crimpies/petmo/wiki/Evaluation-of-Existing-Solutions)
 - [Academic Studies and Published Research](https://github.com/Chicken-Crimpies/petmo/wiki/Academic-Studies-and-Published-Research)
 
@@ -42,9 +42,11 @@
 - [Team Overview](https://github.com/Chicken-Crimpies/petmo/wiki/The-Team)
 
 ## Conference Poster & Promotional Material
+LINKS TO BE UPDATED
 - [Conference Poster](): An informative display detailing the problem space, concept and design process the team adopted.
 - [Promotional Material](): A collection of promotional pieces serving to communicate the team’s idea and supplementing the conference poster.
 
 ## Final Proof-of-Concept Prototype
+LINKS TO BE UPDATED
 -  [Final Prototype](): The final deliverable following numerous iterations of evaluation and design. Includes a step-by-step guide for deployment.
 -  Click [here]() for earlier prototype iterations.
