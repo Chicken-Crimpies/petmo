@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Petmo</string>
+    <string name="facebook_app_id">2828298534128199</string>
+    <string name="fb_login_protocol_scheme">fb2828298534128199</string>
+</resources>

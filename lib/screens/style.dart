@@ -14,16 +14,16 @@ const AppBarTextStyle = TextStyle(
 );
 
 const DarkAccentColor = Color(0xff8B8C89);
-const PrimaryAccentColor = Color(0xff274C77);
-const SecondaryAccentColor = Color(0xff6096BA);
-const TertiaryAccentColor = Color(0xffA3CEF1);
-const LightAccentColor = Color(0xffE7ECEF);
+const PrimaryAccentColor = Color(0xff584B53);
+const SecondaryAccentColor = Color(0xff9D5C63);
+const TertiaryAccentColor = Color(0xffE4BB97);
+const LightAccentColor = Color(0xffFEF5EF);
 
 const TitleTextStyle = TextStyle(
   // fontFamily: FontNameDefault,
   fontWeight: FontWeight.w500,
   fontSize: LargeTextSize,
-  color: PrimaryAccentColor,
+  color: Colors.black87,
 );
 
 const Body1TextStyle = TextStyle(

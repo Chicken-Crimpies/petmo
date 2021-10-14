@@ -42,11 +42,9 @@
 - [Team Overview](https://github.com/Chicken-Crimpies/petmo/wiki/The-Team)
 
 ## Conference Poster & Promotional Material
-LINKS TO BE UPDATED
 - [Conference Poster](): An informative display detailing the problem space, concept and design process the team adopted.
 - [Promotional Material](): A collection of promotional pieces serving to communicate the team’s idea and supplementing the conference poster.
 
 ## Final Proof-of-Concept Prototype
-LINKS TO BE UPDATED
 -  [Final Prototype](): The final deliverable following numerous iterations of evaluation and design. Includes a step-by-step guide for deployment.
 -  Click [here]() for earlier prototype iterations.
