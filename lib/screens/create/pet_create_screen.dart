@@ -58,19 +58,12 @@ class _PetCreateScreenState extends State<PetCreateScreen> {
   Widget build(BuildContext context) {
     final isFormValid = name.isNotEmpty;
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: createPet,
-      //   child: Icon(Icons.add),
-      //   tooltip: 'Create',
-      //   backgroundColor: isFormValid ? PrimaryAccentColor : DarkAccentColor,
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ImageBanner('assets/images/logo.jpg'),
+            ImageBanner('assets/images/logo_clear.jpg'),
             SizedBox(height: 20),
             const Text(
               'Create Your Pet',

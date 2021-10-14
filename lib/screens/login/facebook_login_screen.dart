@@ -90,15 +90,42 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ImageBanner('assets/images/logo.jpg'),
+              const ImageBanner('assets/images/logo_clear.jpg'),
               !loading
-                  ? RaisedButton(
-                      onPressed: _loginWithFacebook,
-                      child: const Text(
-                        'Login With Facebook',
-                        style: TitleTextStyle,
-                      ),
-                    )
+                  ? Column(children: [
+                      const SizedBox(height: 20),
+                      const Text('Connect With Facebook',
+                          style: Body1TextStyle),
+                      const SizedBox(height: 15),
+                      Center(
+                          child: GestureDetector(
+                        onTap: _loginWithFacebook,
+                        child: Container(
+                          height: 60,
+                          width: 120,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color(0x80000000),
+                                  blurRadius: 12.0,
+                                  offset: Offset(0.0, 5.0),
+                                ),
+                              ],
+                              gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  PrimaryAccentColor,
+                                  TertiaryAccentColor,
+                                ],
+                              )),
+                          child: const Center(
+                            child: Icon(Icons.facebook),
+                          ),
+                        ),
+                      ))
+                    ])
                   : const CircularProgressIndicator(),
             ],
           ),
