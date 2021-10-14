@@ -5,6 +5,7 @@ import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/screens/create/image_banner.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
+import 'package:petmo/screens/friends/friends_list.dart';
 import 'package:petmo/screens/profile/profile_screen.dart';
 import 'package:petmo/widgets/bottom_nav_widget.dart';
 
@@ -68,10 +69,15 @@ class _PetScreenState extends State<PetScreen> {
             Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const Friends()));
+
+                },
                 backgroundColor: Color(0xff584B53),
                 foregroundColor: Colors.white,
                 child: const Icon(Icons.supervisor_account),
+
               ),
             ),
             buildPetName(pet),
