@@ -12,13 +12,14 @@ class ImageBanner extends StatelessWidget {
         height: 250.0,
         width: 250.0,
       ),
-      decoration: const BoxDecoration(color: Colors.grey),
+      // decoration: const BoxDecoration(color: Colors.grey),
       child: Image.asset(
         _assetPath,
         fit: BoxFit.cover,
         width: 200.0,
         height: 200.0,
-        colorBlendMode: BlendMode.multiply,
+        isAntiAlias: true,
+        colorBlendMode: BlendMode.src,
       ),
     );
   }

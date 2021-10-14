@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -36,11 +35,26 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
     _renderPinsOnMap();
   }
 
-  void _renderPinsOnMap() {
+  void _renderPinsOnMap() async {
     _markers.add(Marker(
       markerId: MarkerId('sourcePin'),
       position: LatLng(position.latitude, position.longitude),
       icon: BitmapDescriptor.defaultMarker,
+      infoWindow: InfoWindow(
+        title: 'You',
+        snippet: 'Yourself',
+      ),
+      // icon: await BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 2.5), 'assets/images/kangaroo_idle.gif'),
+    ));
+
+    _markers.add(Marker(
+      markerId: MarkerId('other1Pin'),
+      position: LatLng(position.latitude + 0.002, position.longitude + -0.0034),
+      icon: BitmapDescriptor.defaultMarker,
+      infoWindow: InfoWindow(
+        title: 'Friend',
+        snippet: 'Another person',
+      ),
     ));
   }
 
