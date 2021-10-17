@@ -8,8 +8,14 @@ class FriendsProfileScreen extends StatelessWidget {
   const FriendsProfileScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Center(
+  Widget build(BuildContext context) => Container(
+    decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [SecondaryAccentColor, LightAccentColor])),
+    child: Scaffold(
+      body: Center(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -18,17 +24,17 @@ class FriendsProfileScreen extends StatelessWidget {
               "Friend's name",
               style: TitleTextStyle,
             ),
-            SizedBox(height: 20),
-            Text(
-              'Pet Care Streak: 10🔥',
+            const SizedBox(height: 20),
+            const Text(
+              'Pet Care Streak: 12🔥',
               style: TitleTextStyle,
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Currently active',
               style: TitleTextStyle,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               height: 250.0,
               width: 250.0,
@@ -40,13 +46,13 @@ class FriendsProfileScreen extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextButton(
               style: TextButton.styleFrom(
                 primary: Colors.white,
-                backgroundColor: Color(0xff584B53),
+                backgroundColor: PrimaryAccentColor,
               ),
               onPressed: () {},
               child: Text('Send a walk request'),
@@ -54,7 +60,7 @@ class FriendsProfileScreen extends StatelessWidget {
             TextButton(
               style: TextButton.styleFrom(
                 primary: Colors.white,
-                backgroundColor: Color(0xff584B53),
+                backgroundColor: PrimaryAccentColor,
               ),
               onPressed: () {},
               child: Text('Send a reminder to feed their pet'),
@@ -62,22 +68,22 @@ class FriendsProfileScreen extends StatelessWidget {
             TextButton(
               style: TextButton.styleFrom(
                 primary: Colors.white,
-                backgroundColor: Color(0xff584B53),
+                backgroundColor: PrimaryAccentColor,
               ),
               onPressed: () {},
               child: Text('Send a reminder to play with their pet'),
-            ),
-          ],
+            )
+          ]
         )),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => FriendsScreen()));
+                .push(MaterialPageRoute(builder: (_) => const FriendsScreen()));
           },
-          backgroundColor: Color(0xff584B53),
+          backgroundColor: PrimaryAccentColor,
           foregroundColor: Colors.white,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      );
+    ));
 }
