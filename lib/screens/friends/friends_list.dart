@@ -15,6 +15,13 @@ class Friends extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
     body: ListView(
       children: <Widget>[
+        SizedBox(height: 20),
+        const Text(
+          "Friends List",
+          style: TitleTextStyle,
+          textAlign: TextAlign.center,
+
+        ),
         ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage('assets/images/friend1.PNG'), // no matter how big it is, it won't overflow
