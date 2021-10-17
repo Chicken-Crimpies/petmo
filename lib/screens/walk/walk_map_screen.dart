@@ -48,14 +48,6 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
   Future fetchActiveWalk() async {
     if (await WalksDatabase.instance.doesActiveWalkExist()) {
       ActiveWalk.activeWalk = await WalksDatabase.instance.getActiveWalk();
-    } else {
-      setState(() => const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.green,
-                Colors.lightGreenAccent,
-              ]));
     }
   }
 
@@ -143,7 +135,17 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
 
   void _setInitialButtonState() {
     setState(() {
-      if (ActiveWalk.isWalkActive()) buttonText = 'Stop Walk';
+      if (ActiveWalk.isWalkActive()) {
+        buttonText = 'Stop Walk';
+      } else {
+        buttonGradient = const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.green,
+              Colors.lightGreenAccent,
+            ]);
+      }
     });
   }
 
