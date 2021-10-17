@@ -1,6 +1,6 @@
 import 'package:petmo/models/attributes/abstract_pet_attribute.dart';
 
-final String tablePets = 'pets';
+const String tablePets = 'pets';
 
 class PetFields {
   static final List<String> values = [
@@ -14,14 +14,14 @@ class PetFields {
     isLocalPet
   ];
 
-  static final String id = '_id';
-  static final String name = 'name';
-  static final String created = 'created';
-  static final String exercise = 'exercise';
-  static final String happiness = 'happiness';
-  static final String health = 'health';
-  static final String hunger = 'hunger';
-  static final String isLocalPet = 'isLocalPet';
+  static const String id = '_id';
+  static const String name = 'name';
+  static const String created = 'created';
+  static const String exercise = 'exercise';
+  static const String happiness = 'happiness';
+  static const String health = 'health';
+  static const String hunger = 'hunger';
+  static const String isLocalPet = 'isLocalPet';
 }
 
 class Pet {
