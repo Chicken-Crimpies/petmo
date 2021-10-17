@@ -31,7 +31,6 @@ class Petmo extends StatelessWidget {
   RouteFactory _routes() {
     return (settings) {
       Widget screen;
-      print(settings.name);
       switch (settings.name) {
         case LoginRoute:
           screen = const FacebookLoginScreen();
@@ -49,7 +48,7 @@ class Petmo extends StatelessWidget {
   ThemeData _theme() {
     return ThemeData(
       fontFamily: DefaultFontFamily,
-      scaffoldBackgroundColor: LightAccentColor,
+      scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         backgroundColor: PrimaryAccentColor,
         foregroundColor: Colors.white,
