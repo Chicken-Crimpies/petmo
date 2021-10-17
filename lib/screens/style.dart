@@ -20,15 +20,19 @@ const TertiaryAccentColor = Color(0xffE4BB97);
 const LightAccentColor = Color(0xffFEF5EF);
 
 const TitleTextStyle = TextStyle(
-  // fontFamily: FontNameDefault,
   fontWeight: FontWeight.w500,
   fontSize: LargeTextSize,
   color: Colors.black87,
 );
 
 const Body1TextStyle = TextStyle(
-  // fontFamily: FontNameDefault,
   fontWeight: FontWeight.w400,
   fontSize: BodyTextSize,
   color: DarkAccentColor,
+);
+
+const Body2TextStyle = TextStyle(
+  fontWeight: FontWeight.w800,
+  fontSize: BodyTextSize,
+  color: Colors.black87,
 );

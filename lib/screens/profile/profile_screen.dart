@@ -9,7 +9,13 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [SecondaryAccentColor, LightAccentColor])),
+      child: Scaffold(
         body: Center(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,11 +56,11 @@ class ProfileScreen extends StatelessWidget {
           child: const Icon(Icons.home),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => PetScreen()));
+                .push(MaterialPageRoute(builder: (_) => const PetScreen()));
           },
-          backgroundColor: Color(0xff584B53),
+          backgroundColor: const Color(0xff584B53),
           foregroundColor: Colors.white,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      );
+      ));
 }
