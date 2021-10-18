@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:petmo/db/walks_database.dart';
+import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/models/walk/active_walk.dart';
 
 const String tableWalks = 'walks';
@@ -89,5 +91,6 @@ class Walk {
   void end(Position position) async {
     ActiveWalk.activeWalk = copy(endTime: DateTime.now(), endPosition: position, isActive: false);
     await WalksDatabase.instance.update(ActiveWalk.activeWalk);
+    await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: UserDetails.email).get().then((value) => value.docs[0].reference.update(UserDetails.toMap()));
   }
 }

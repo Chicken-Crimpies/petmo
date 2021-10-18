@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/screens/friends/friends_profile_screen.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -16,22 +16,22 @@ class FriendsScreen extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [SecondaryAccentColor, LightAccentColor])),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text('Friends List'),
+          backgroundColor: PrimaryAccentColor,
+          centerTitle: true,
+        ),
         body: ListView(
           children: <Widget>[
             const SizedBox(height: 20),
-            const Text(
-              "Friends List",
-              style: TitleTextStyle,
-              textAlign: TextAlign.center,
-            ),
             ListTile(
                 leading: const CircleAvatar(
                   backgroundImage: AssetImage(
                       'assets/images/friend1.PNG'), // no matter how big it is, it won't overflow
                 ),
                 title: const Text('Friend 1'),
-                subtitle:
-                    const Text("Pet Care Streak: 12🔥\nCurrently walking their pet"),
+                subtitle: const Text(
+                    "Pet Care Streak: 12🔥\nCurrently walking their pet"),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => const FriendsProfileScreen()));
@@ -67,7 +67,7 @@ class FriendsScreen extends StatelessWidget {
           child: const Icon(Icons.home),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const PetScreen()));
+                .push(MaterialPageRoute(builder: (_) => const HomeScreen()));
           },
           backgroundColor: PrimaryAccentColor,
           foregroundColor: Colors.white,

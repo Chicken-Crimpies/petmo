@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/screens/create/image_banner.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -32,18 +32,28 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
           facebookLoginResult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
-      await FirebaseFirestore.instance.collection('users').add({
-        'email': userData['email'],
-        'imageUrl': userData['picture']['data']['url'],
-        'name': userData['name'],
-      });
+      // Check if the user already exists in the database
+      bool existing = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.size >= 1);
+
+      if (existing) {
+        UserDetails.points = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('points'));
+
+      } else {
+        await FirebaseFirestore.instance.collection('users').add({
+          'email': userData['email'],
+          'imageUrl': userData['picture']['data']['url'],
+          'name': userData['name'],
+          'points': 0,
+        });
+        UserDetails.points = 0;
+      }
 
       UserDetails.name = userData['name'];
       UserDetails.email = userData['email'];
       UserDetails.profilePictureUrl = userData['picture']['data']['url'];
 
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => PetScreen()), (route) => false);
+          MaterialPageRoute(builder: (_) => HomeScreen()), (route) => false);
     } on FirebaseAuthException catch (exception) {
       String content = '';
       switch (exception.code) {
