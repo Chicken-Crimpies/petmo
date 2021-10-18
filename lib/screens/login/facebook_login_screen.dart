@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/screens/create/image_banner.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 

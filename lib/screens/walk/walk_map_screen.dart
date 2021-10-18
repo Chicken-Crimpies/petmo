@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:petmo/db/walks_database.dart';
 import 'package:petmo/models/walk/active_walk.dart';
 import 'package:petmo/models/walk/walk.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
