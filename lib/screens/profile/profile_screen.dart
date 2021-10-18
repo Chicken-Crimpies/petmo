@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/models/user/user_details.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -15,16 +15,23 @@ class ProfileScreen extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [SecondaryAccentColor, LightAccentColor])),
+
       child: Scaffold(
+
         body: Center(
             child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Petmo Profile',
-              style: TitleTextStyle,
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            AppBar(
+              title: Text('Petmo Profile'),
+              backgroundColor: PrimaryAccentColor,
+              centerTitle: true,
+
+
             ),
+
             SizedBox(height: 20),
             Container(
               constraints: const BoxConstraints.expand(
@@ -52,15 +59,6 @@ class ProfileScreen extends StatelessWidget {
             )
           ],
         )),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const PetScreen()));
-          },
-          backgroundColor: PrimaryAccentColor,
-          foregroundColor: Colors.white,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
       ));
 }

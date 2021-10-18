@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/screens/friends/friends_profile_screen.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -10,6 +10,7 @@ class FriendsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
+
       decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -18,12 +19,14 @@ class FriendsScreen extends StatelessWidget {
       child: Scaffold(
         body: ListView(
           children: <Widget>[
-            const SizedBox(height: 20),
-            const Text(
-              "Friends List",
-              style: TitleTextStyle,
-              textAlign: TextAlign.center,
+            AppBar(
+              title: Text('Friends List'),
+              backgroundColor: PrimaryAccentColor,
+              centerTitle: true,
+
             ),
+            const SizedBox(height: 20),
+
             ListTile(
                 leading: const CircleAvatar(
                   backgroundImage: AssetImage(
@@ -63,15 +66,5 @@ class FriendsScreen extends StatelessWidget {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const PetScreen()));
-          },
-          backgroundColor: PrimaryAccentColor,
-          foregroundColor: Colors.white,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ));
 }
