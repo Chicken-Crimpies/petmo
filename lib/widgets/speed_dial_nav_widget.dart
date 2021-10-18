@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:petmo/screens/style.dart';
+import 'package:petmo/screens/walk/walk_map_screen.dart';
 
 class SpeedDialNavWidget extends StatelessWidget {
   const SpeedDialNavWidget({Key? key}) : super(key: key);
@@ -24,13 +25,16 @@ class SpeedDialNavWidget extends StatelessWidget {
         direction: SpeedDialDirection.up,
         children: [
           SpeedDialChild(
-            child: const Icon(Icons.directions_walk),
-            backgroundColor: Colors.white,
-            foregroundColor: PrimaryAccentColor,
-            label: 'Walk',
-            labelBackgroundColor: Colors.white,
-            labelStyle: Body1TextStyle,
-          ),
+              child: const Icon(Icons.directions_walk),
+              backgroundColor: Colors.white,
+              foregroundColor: PrimaryAccentColor,
+              label: 'Walk',
+              labelBackgroundColor: Colors.white,
+              labelStyle: Body1TextStyle,
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const WalkMapScreen()));
+              }),
           SpeedDialChild(
             child: const Icon(Icons.sports_baseball),
             backgroundColor: Colors.white,

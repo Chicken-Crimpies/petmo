@@ -19,7 +19,6 @@ class PetsDatabase {
 
   Future<Database> _initDb(String filePath) async {
     final dbPath = await getDatabasesPath();
-    print('[LOG] ' + dbPath);
     final path = join(dbPath, filePath);
     return await openDatabase(path, version: 1, onCreate: _createDb);
   }

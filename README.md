@@ -23,18 +23,18 @@
 
 ### Prototypes & Evaluation
 - [Low Fidelity](https://github.com/Chicken-Crimpies/petmo/wiki/Low-Fidelity-Prototype)
-- [Medium Fidelity]()
-- [High Fidelity]()
+- [Medium Fidelity](https://github.com/Chicken-Crimpies/petmo/wiki/Medium-Fidelity)
+- [High Fidelity](https://github.com/Chicken-Crimpies/petmo/wiki/High-Fidelity)
 
 ### Meetings and Stand-Ups
 - [Week 8 Stand-Up](https://github.com/Chicken-Crimpies/petmo/wiki/Week-8-Stand-Up)
 - [Week 10 Stand-Up](https://github.com/Chicken-Crimpies/petmo/wiki/Week-10-Stand-Up)
-- [Weekly Meeting Minutes](https://github.com/Chicken-Crimpies/petmo/wiki/Experience-Requirements)
+- [Weekly Meeting Minutes](https://github.com/Chicken-Crimpies/petmo/wiki/Weekly-Minutes)
 
 ### Research
 - [Consolidation of Research](https://github.com/Chicken-Crimpies/petmo/wiki/Consolidation-of-Research)
-- [Interview Process and Insights]()
-- [Observational Research](https://github.com/Chicken-Crimpies/petmo/wiki/Interview-Process-and-Insights)
+- [Interview Process and Insights](https://github.com/Chicken-Crimpies/petmo/wiki/Interview-Process-and-Insights)
+- [Observational Research](https://github.com/Chicken-Crimpies/petmo/wiki/Observational-Research)
 - [Evaluation of Existing Solutions](https://github.com/Chicken-Crimpies/petmo/wiki/Evaluation-of-Existing-Solutions)
 - [Academic Studies and Published Research](https://github.com/Chicken-Crimpies/petmo/wiki/Academic-Studies-and-Published-Research)
 
