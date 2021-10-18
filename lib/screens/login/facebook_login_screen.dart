@@ -37,15 +37,17 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
 
       if (existing) {
         UserDetails.points = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('points'));
-
+        UserDetails.streak = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('streak'));
       } else {
         await FirebaseFirestore.instance.collection('users').add({
           'email': userData['email'],
           'imageUrl': userData['picture']['data']['url'],
           'name': userData['name'],
           'points': 0,
+          'streak': 0,
         });
         UserDetails.points = 0;
+        UserDetails.streak = 0;
       }
 
       UserDetails.name = userData['name'];

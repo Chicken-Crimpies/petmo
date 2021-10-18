@@ -178,6 +178,7 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
           title: Text('Petmo Map'),
           backgroundColor: PrimaryAccentColor,
           centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: Stack(children: [
           GoogleMap(
