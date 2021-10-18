@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:petmo/db/walks_database.dart';
+import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/models/walk/active_walk.dart';
 import 'package:petmo/models/walk/walk.dart';
 import 'package:petmo/screens/pet/home_screen.dart';
@@ -21,7 +22,7 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
   late Position position;
   final Set<Marker> _markers = <Marker>{};
   String buttonText = 'Start Walk';
-  double distance = 0;
+  int distance = 0;
   int duration = 0;
   LinearGradient buttonGradient = const LinearGradient(
       begin: Alignment.topLeft,
@@ -100,10 +101,11 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
     if (ActiveWalk.isWalkActive()) {
       setState(() {
         distance = Geolocator.distanceBetween(
-            ActiveWalk.activeWalk.startPosition.latitude,
-            ActiveWalk.activeWalk.startPosition.longitude,
-            position.latitude,
-            position.longitude);
+                ActiveWalk.activeWalk.startPosition.latitude,
+                ActiveWalk.activeWalk.startPosition.longitude,
+                position.latitude,
+                position.longitude)
+            .toInt();
         duration = DateTime.now()
             .difference(ActiveWalk.activeWalk.startTime)
             .inMinutes;
@@ -117,6 +119,7 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
               Colors.lightGreenAccent,
             ]);
       });
+      UserDetails.points += distance + duration;
       ActiveWalk.activeWalk.end(position);
     } else {
       setState(() {
@@ -171,6 +174,11 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text('Petmo Map'),
+          backgroundColor: PrimaryAccentColor,
+          centerTitle: true,
+        ),
         body: Stack(children: [
           GoogleMap(
             onMapCreated: _onMapCreated,

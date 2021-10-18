@@ -15,23 +15,17 @@ class ProfileScreen extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [SecondaryAccentColor, LightAccentColor])),
-
       child: Scaffold(
-
+        appBar: AppBar(
+          title: Text('Petmo Profile'),
+          backgroundColor: PrimaryAccentColor,
+          centerTitle: true,
+        ),
         body: Center(
             child: Column(
-
           crossAxisAlignment: CrossAxisAlignment.center,
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            AppBar(
-              title: Text('Petmo Profile'),
-              backgroundColor: PrimaryAccentColor,
-              centerTitle: true,
-
-
-            ),
-
             SizedBox(height: 20),
             Container(
               constraints: const BoxConstraints.expand(
@@ -54,7 +48,12 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Pet Care Streak: 10🔥',
+              'Pet Care Streak: 10 🔥',
+              style: TitleTextStyle,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'RSPCA Points: ' + UserDetails.points.toString() + ' 🦘',
               style: TitleTextStyle,
             )
           ],

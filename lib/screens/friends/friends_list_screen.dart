@@ -10,31 +10,28 @@ class FriendsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-
       decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [SecondaryAccentColor, LightAccentColor])),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text('Friends List'),
+          backgroundColor: PrimaryAccentColor,
+          centerTitle: true,
+        ),
         body: ListView(
           children: <Widget>[
-            AppBar(
-              title: Text('Friends List'),
-              backgroundColor: PrimaryAccentColor,
-              centerTitle: true,
-
-            ),
             const SizedBox(height: 20),
-
             ListTile(
                 leading: const CircleAvatar(
                   backgroundImage: AssetImage(
                       'assets/images/friend1.PNG'), // no matter how big it is, it won't overflow
                 ),
                 title: const Text('Friend 1'),
-                subtitle:
-                    const Text("Pet Care Streak: 12🔥\nCurrently walking their pet"),
+                subtitle: const Text(
+                    "Pet Care Streak: 12🔥\nCurrently walking their pet"),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => const FriendsProfileScreen()));
