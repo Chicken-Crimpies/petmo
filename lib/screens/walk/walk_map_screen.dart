@@ -215,7 +215,7 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
           child: const Icon(Icons.home),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => PetScreen()));
+                .push(MaterialPageRoute(builder: (_) => HomeScreen()));
           },
           backgroundColor: PrimaryAccentColor,
           foregroundColor: Colors.white,

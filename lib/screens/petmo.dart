@@ -36,7 +36,7 @@ class Petmo extends StatelessWidget {
           screen = const FacebookLoginScreen();
           break;
         case PetScreenRoute:
-          screen = PetScreen();
+          screen = HomeScreen();
           break;
         default:
           return null;

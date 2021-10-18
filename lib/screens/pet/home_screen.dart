@@ -11,14 +11,14 @@ import 'package:petmo/widgets/bottom_nav_widget.dart';
 
 import '../style.dart';
 
-class PetScreen extends StatefulWidget {
-  const PetScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _PetScreenState createState() => _PetScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _PetScreenState extends State<PetScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   late Pet pet;
   bool isLoading = false;
   bool doesLocalPetExist = false;

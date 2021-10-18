@@ -43,7 +43,7 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
       UserDetails.profilePictureUrl = userData['picture']['data']['url'];
 
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => PetScreen()), (route) => false);
+          MaterialPageRoute(builder: (_) => HomeScreen()), (route) => false);
     } on FirebaseAuthException catch (exception) {
       String content = '';
       switch (exception.code) {

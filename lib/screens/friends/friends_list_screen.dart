@@ -66,5 +66,15 @@ class FriendsScreen extends StatelessWidget {
             ),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.home),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => const HomeScreen()));
+          },
+          backgroundColor: PrimaryAccentColor,
+          foregroundColor: Colors.white,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ));
 }
