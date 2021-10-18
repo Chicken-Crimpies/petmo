@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,7 @@ class FriendsProfileScreen extends StatelessWidget {
                 primary: Colors.white,
                 backgroundColor: PrimaryAccentColor,
               ),
-              onPressed: () {},
+              onPressed: _sendNotification,
               child: Text('Send a walk request'),
             ),
             TextButton(
@@ -86,4 +87,9 @@ class FriendsProfileScreen extends StatelessWidget {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     ));
+
+  void _sendNotification() {
+    //
+
+  }
 }

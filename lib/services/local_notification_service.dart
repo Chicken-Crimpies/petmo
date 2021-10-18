@@ -1,5 +1,4 @@
 
-import 'dart:js';
 import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
