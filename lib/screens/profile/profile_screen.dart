@@ -20,6 +20,7 @@ class ProfileScreen extends StatelessWidget {
           title: Text('Petmo Profile'),
           backgroundColor: PrimaryAccentColor,
           centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: Center(
             child: Column(
@@ -48,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Pet Care Streak: 10 🔥',
+              'Pet Care Streak: ' + UserDetails.streak.toString() + ' 🔥',
               style: TitleTextStyle,
             ),
             SizedBox(height: 20),
