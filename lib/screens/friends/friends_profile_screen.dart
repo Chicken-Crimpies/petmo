@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/models/user/friend.dart';
@@ -78,18 +80,18 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
               'Currently active',
               style: TitleTextStyle,
             ),
-            const SizedBox(height: 80),
+            const SizedBox(height: 0),
             const SizedBox(
               height: 20,
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 90.0),
+              padding: EdgeInsets.only(bottom: 0.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 GestureDetector(
-                onTap: () {},
+                onTap: _sendWalkRequest,
                 child: Container(
                     height: 60,
                     width: 120,
@@ -203,4 +205,15 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     ));
+
+  void _sendWalkRequest() async {
+    print('running');
+
+    print(await FirebaseMessaging.instance.getToken());
+
+    FirebaseFirestore.instance.collection('notifications').add({
+      'receiver': widget.friend.email,
+      'token': widget.friend.token,
+    });
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -45,10 +46,12 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
           'name': userData['name'],
           'points': 0,
           'streak': 0,
+          'token': await FirebaseMessaging.instance.getToken(),
         });
         UserDetails.points = 0;
         UserDetails.streak = 0;
       }
+
 
       UserDetails.name = userData['name'];
       UserDetails.email = userData['email'];
@@ -56,6 +59,8 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
 
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (_) => HomeScreen()), (route) => false);
+      // await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value)
+      // => value.docs[0].reference.update(UserDetails.toMap()));
     } on FirebaseAuthException catch (exception) {
       String content = '';
       switch (exception.code) {

@@ -32,6 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
     refreshPet();
   }
 
+
+
   @override
   void dispose() {
     PetsDatabase.instance.close();
@@ -139,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() => isLoading = false);
   }
 
-  void initNotification(){
+  void initNotification() async {
     LocalNotificationService.initialize(context);
 
     LocalNotificationService.initialize(context);
@@ -167,7 +169,6 @@ class _HomeScreenState extends State<HomeScreen> {
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       final routeFromMessage = message.data["route"];
       Navigator.of(context).pushNamed(routeFromMessage);
-
     });
   }
 
