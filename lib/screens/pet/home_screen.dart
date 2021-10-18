@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               // ),
                               const Center(
                                 child: ImageBanner(
-                                    'assets/images/kangaroo_idle.gif'),
+                                    'assets/images/kangaroo_idle_clear.gif'),
                               ),
                               const Expanded(
                                 child: BottomNavWidget(),

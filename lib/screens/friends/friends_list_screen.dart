@@ -1,12 +1,42 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:petmo/screens/friends/friends_profile_screen.dart';
+import 'package:petmo/models/user/friend.dart';
+import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
+import 'friends_profile_screen.dart';
 
 class FriendsScreen extends StatelessWidget {
   const FriendsScreen({Key? key}) : super(key: key);
+
+  List<Widget> _getFirestoreUsers(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
+    List<QueryDocumentSnapshot> documents = snapshot.data!.docs;
+    documents.removeWhere((document) => document['email'] == UserDetails.email);
+    return documents
+        .map((document) => ListTile(
+              leading: CircleAvatar(
+                child: Image.network(document[
+                    'imageUrl']), // no matter how big it is, it won't overflow
+              ),
+              title: Text(document['name']),
+              subtitle: const Text(
+                  "Pet Care Streak: 12🔥\nCurrently walking their pet"),
+              onTap: () {
+                Friend friend = Friend(
+                  email: document['email'],
+                  imageUrl: document['imageUrl'],
+                  name: document['name'],
+                  points: document['points'],
+                  streak: document['streak'],
+                );
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => FriendsProfileScreen(friend: friend)));
+              },
+            ))
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) => Container(
@@ -20,49 +50,16 @@ class FriendsScreen extends StatelessWidget {
           title: Text('Friends List'),
           backgroundColor: PrimaryAccentColor,
           centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
-        body: ListView(
-          children: <Widget>[
-            const SizedBox(height: 20),
-            ListTile(
-                leading: const CircleAvatar(
-                  backgroundImage: AssetImage(
-                      'assets/images/friend1.PNG'), // no matter how big it is, it won't overflow
-                ),
-                title: const Text('Friend 1'),
-                subtitle: const Text(
-                    "Pet Care Streak: 12🔥\nCurrently walking their pet"),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => const FriendsProfileScreen()));
-                }),
-            const ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(
-                    'assets/images/friend2.PNG'), // no matter how big it is, it won't overflow
-              ),
-              title: Text('Friend 2'),
-              subtitle: Text(
-                  "Pet Care Streak: 17🔥\nCurrently playing with their pet"),
-            ),
-            const ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(
-                    'assets/images/friend3.PNG'), // no matter how big it is, it won't overflow
-              ),
-              title: Text('Friend 3'),
-              subtitle: Text("Pet Care Streak: 6🔥\nActive 5 minutes ago"),
-            ),
-            const ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(
-                    'assets/images/friend4.PNG'), // no matter how big it is, it won't overflow
-              ),
-              title: Text('Friend 4'),
-              subtitle: Text("Pet Care Streak: 2🔥\nOffline"),
-            ),
-          ],
-        ),
+        body: StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance.collection('users').snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData)
+                return const Text('There are no other users.');
+              return ListView(children: _getFirestoreUsers(snapshot, context));
+            }),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.home),
           onPressed: () {
