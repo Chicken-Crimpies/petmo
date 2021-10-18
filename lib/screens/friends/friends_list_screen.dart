@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/screens/friends/friends_profile_screen.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -67,7 +67,7 @@ class FriendsScreen extends StatelessWidget {
           child: const Icon(Icons.home),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const PetScreen()));
+                .push(MaterialPageRoute(builder: (_) => const HomeScreen()));
           },
           backgroundColor: PrimaryAccentColor,
           foregroundColor: Colors.white,

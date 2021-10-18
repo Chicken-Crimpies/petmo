@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import 'login/facebook_login_screen.dart';
 import 'style.dart';
@@ -36,7 +36,7 @@ class Petmo extends StatelessWidget {
           screen = const FacebookLoginScreen();
           break;
         case PetScreenRoute:
-          screen = PetScreen();
+          screen = HomeScreen();
           break;
         default:
           return null;
