@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:petmo/db/pets_database.dart';
 import 'package:petmo/models/pet/pet.dart';
-import 'package:petmo/screens/create/image_banner.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
 import 'package:petmo/screens/friends/friends_list_screen.dart';
 import 'package:petmo/screens/profile/profile_screen.dart';
@@ -60,17 +59,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 child: buildAppBar(),
                               ),
-                              // Expanded(
-                              //   child: buildPet(pet),
-                              // ),
-                              const Center(
-                                child: ImageBanner(
-                                    'assets/images/kangaroo_idle_clear.gif'),
-                              ),
+                              Center(
+                                  child: Image.asset(
+                                'assets/images/kangaroo_idle_clear_2.gif',
+                              )),
                               const Expanded(
                                 child: BottomNavWidget(),
                               )
-                              // buildBottomNav(),
                             ]))));
 
   Widget buildAppBar() => Scaffold(
@@ -82,8 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: const EdgeInsets.only(top: 5.0),
                   child: FloatingActionButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const FriendsScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const FriendsScreen()));
                     },
                     backgroundColor: PrimaryAccentColor,
                     foregroundColor: Colors.white,
