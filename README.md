@@ -14,7 +14,7 @@
 </p>
 
 
-## Table of Contents
+## Table of Contents.     *******TO BE UPDATED*********
 
 ### Design Process
 - [Summary of the Problem Space](https://github.com/Chicken-Crimpies/petmo/wiki/Summary-of-Problem-Space)
