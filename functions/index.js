@@ -12,6 +12,7 @@ exports.myFunction = functions.firestore
   const title = snapshot.data().title;
   const body = snapshot.data().body;
   const route = snapshot.data().route;
+  const sender = snapshot.data().sender;
 
   const payload = {
       notification: {
@@ -20,6 +21,7 @@ exports.myFunction = functions.firestore
       },
       data: {
           route: route,
+          sender: sender,
       },
   };
 
