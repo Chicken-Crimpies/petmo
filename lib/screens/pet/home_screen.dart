@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -6,6 +7,7 @@ import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
 import 'package:petmo/screens/friends/friends_list_screen.dart';
 import 'package:petmo/screens/profile/profile_screen.dart';
+import 'package:petmo/services/local_notification_service.dart';
 import 'package:petmo/widgets/bottom_nav_widget.dart';
 
 import '../style.dart';
@@ -25,8 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    initNotification();
     refreshPet();
   }
+
+
 
   @override
   void dispose() {
@@ -129,6 +134,37 @@ class _HomeScreenState extends State<HomeScreen> {
       pet = await PetsDatabase.instance.getLocalPet();
     }
     setState(() => isLoading = false);
+  }
+
+  void initNotification() async {
+    LocalNotificationService.initialize(context);
+
+    LocalNotificationService.initialize(context);
+
+    ///gives you the message on which user taps and it opened the app from terminated state
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      if(message != null){
+        final routeFromMessage = message.data["route"];
+        Navigator.of(context).pushNamed(routeFromMessage);
+      }
+    });
+
+
+    /// Foreground
+    FirebaseMessaging.onMessage.listen((message) {
+      if (message.notification != null){
+        print(message.notification!.body);
+        print(message.notification!.title);
+      }
+      LocalNotificationService.display(message);
+    });
+
+    /// When the app is in background but opened and user taps on the notification
+    ///
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      final routeFromMessage = message.data["route"];
+      Navigator.of(context).pushNamed(routeFromMessage);
+    });
   }
 
   Widget buildPetName(Pet pet) => Padding(
