@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/models/user/friend.dart';
+import 'package:petmo/models/user/user_details.dart';
 
 import '../style.dart';
 import 'friends_list_screen.dart';
@@ -198,6 +199,9 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
     FirebaseFirestore.instance.collection('notifications').add({
       'receiver': widget.friend.email,
       'token': widget.friend.token,
+      'title': 'Walk Request',
+      'body': UserDetails.name + ' wants to walk with you.',
+      'route': '/walk',
     });
   }
 }
