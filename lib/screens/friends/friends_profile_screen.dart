@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/models/user/friend.dart';
+import 'package:petmo/models/user/user_details.dart';
 
 import '../style.dart';
 import 'friends_list_screen.dart';
@@ -114,7 +115,7 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
                             child: Text('Walk Request'),
                           ))),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: _sendFeedReminder,
                       child: Container(
                           height: 60,
                           width: 120,
@@ -139,7 +140,7 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
                             child: Text('Feed Reminder'),
                           ))),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: _sendPlayReminder,
                       child: Container(
                           height: 60,
                           width: 120,
@@ -179,6 +180,14 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
       ));
 
   void _sendWalkRequest() async {
+    FirebaseFirestore.instance.collection('notifications').add({
+      'receiver': widget.friend.email,
+      'token': widget.friend.token,
+      'title': 'Walk Request',
+      'body': UserDetails.name + ' wants to walk with you.',
+      'route': '/walk',
+      'sender': UserDetails.name,
+    });
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -195,9 +204,62 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
                       child: const Icon(Icons.close))
                 ]));
 
+
+  }
+
+  void _sendFeedReminder() async {
     FirebaseFirestore.instance.collection('notifications').add({
       'receiver': widget.friend.email,
       'token': widget.friend.token,
+      'title': 'Feed Reminder',
+      'body': UserDetails.name + ' is reminding you to feed your Petmo.',
+      'route': '/',
+      'sender': UserDetails.name,
     });
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+            title: const Text('Notification Sent', style: TitleTextStyle),
+            content: Text(
+              'Walk request sent to ' + widget.friend.name + '.',
+              style: Body1TextStyle,
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(Icons.close))
+            ]));
+
+
+  }
+
+  void _sendPlayReminder() async {
+    FirebaseFirestore.instance.collection('notifications').add({
+      'receiver': widget.friend.email,
+      'token': widget.friend.token,
+      'title': 'Play Reminder',
+      'body': UserDetails.name + ' is reminding you to play with your Petmo.',
+      'route': '/',
+      'sender': UserDetails.name,
+    });
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+            title: const Text('Notification Sent', style: TitleTextStyle),
+            content: Text(
+              'Walk request sent to ' + widget.friend.name + '.',
+              style: Body1TextStyle,
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(Icons.close))
+            ]));
+
+
   }
 }

@@ -9,14 +9,19 @@ exports.myFunction = functions.firestore
   .onCreate((snapshot, context) => {
   const receiver = snapshot.data().receiver;
   const token = snapshot.data().token;
+  const title = snapshot.data().title;
+  const body = snapshot.data().body;
+  const route = snapshot.data().route;
+  const sender = snapshot.data().sender;
 
   const payload = {
       notification: {
-          title: "cloud function demo",
-          body: "test",
+          title: title,
+          body: body,
       },
       data: {
-          body: "test",
+          route: route,
+          sender: sender,
       },
   };
 

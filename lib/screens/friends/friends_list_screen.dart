@@ -14,7 +14,7 @@ class FriendsScreen extends StatelessWidget {
   List<Widget> _getFirestoreUsers(
       AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
     List<QueryDocumentSnapshot> documents = snapshot.data!.docs;
-    documents.removeWhere((document) => document['email'] == UserDetails.email);
+    //documents.removeWhere((document) => document['email'] == UserDetails.email);
     return documents
         .map((document) => ListTile(
               leading: CircleAvatar(
