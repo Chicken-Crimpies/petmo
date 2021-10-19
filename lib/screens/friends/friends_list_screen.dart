@@ -11,9 +11,10 @@ import 'friends_profile_screen.dart';
 class FriendsScreen extends StatelessWidget {
   const FriendsScreen({Key? key}) : super(key: key);
 
-  List<Widget> _getFirestoreUsers(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
+  List<Widget> _getFirestoreUsers(
+      AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
     List<QueryDocumentSnapshot> documents = snapshot.data!.docs;
-    // documents.removeWhere((document) => document['email'] == UserDetails.email);
+    documents.removeWhere((document) => document['email'] == UserDetails.email);
     return documents
         .map((document) => ListTile(
               leading: CircleAvatar(
@@ -32,8 +33,8 @@ class FriendsScreen extends StatelessWidget {
                   streak: document['streak'],
                   token: document['token'],
                 );
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => FriendsProfileScreen(friend: friend)));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => FriendsProfileScreen(friend: friend)));
               },
             ))
         .toList();
