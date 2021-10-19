@@ -12,11 +12,11 @@ exports.myFunction = functions.firestore
 
   const payload = {
       notification: {
-          title: "cloud function demo",
-          body: "test",
+          title: "Walk Request",
+          body: "Your friend wants to walk with you",
       },
       data: {
-          body: "test",
+          route: "/walk",
       },
   };
 
