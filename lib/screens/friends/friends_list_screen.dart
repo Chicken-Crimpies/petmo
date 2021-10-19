@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/models/user/friend.dart';
+import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
@@ -13,7 +14,7 @@ class FriendsScreen extends StatelessWidget {
   List<Widget> _getFirestoreUsers(
       AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
     List<QueryDocumentSnapshot> documents = snapshot.data!.docs;
-    // documents.removeWhere((document) => document['email'] == UserDetails.email);
+    documents.removeWhere((document) => document['email'] == UserDetails.email);
     return documents
         .map((document) => ListTile(
               leading: CircleAvatar(
