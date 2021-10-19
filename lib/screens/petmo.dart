@@ -1,13 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
+import 'package:petmo/screens/walk/walk_map_screen.dart';
 
 import 'login/facebook_login_screen.dart';
 import 'style.dart';
 
 const LoginRoute = '/';
 const PetScreenRoute = '/home';
-const PetDetailScreenRoute = '/pet_detail';
+const WalkMapScreenRoute = '/walk';
 
 class Petmo extends StatelessWidget {
   final _initialization = Firebase.initializeApp();
@@ -31,13 +32,15 @@ class Petmo extends StatelessWidget {
   RouteFactory _routes() {
     return (settings) {
       Widget screen;
-      print(settings.name);
       switch (settings.name) {
         case LoginRoute:
           screen = const FacebookLoginScreen();
           break;
         case PetScreenRoute:
-          screen = PetScreen();
+          screen = const HomeScreen();
+          break;
+        case WalkMapScreenRoute:
+          screen = const WalkMapScreen(fromNotification: false);
           break;
         default:
           return null;
@@ -49,7 +52,7 @@ class Petmo extends StatelessWidget {
   ThemeData _theme() {
     return ThemeData(
       fontFamily: DefaultFontFamily,
-      scaffoldBackgroundColor: LightAccentColor,
+      scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: const AppBarTheme(
         backgroundColor: PrimaryAccentColor,
         foregroundColor: Colors.white,

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmo/models/user/user_details.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -9,16 +9,24 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [SecondaryAccentColor, LightAccentColor])),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Petmo Profile'),
+          backgroundColor: PrimaryAccentColor,
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+        ),
         body: Center(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Petmo Profile',
-              style: TitleTextStyle,
-            ),
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
             SizedBox(height: 20),
             Container(
               constraints: const BoxConstraints.expand(
@@ -41,7 +49,12 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Pet Care Streak: 10🔥',
+              'Pet Care Streak: ' + UserDetails.streak.toString() + ' 🔥',
+              style: TitleTextStyle,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'RSPCA Points: ' + UserDetails.points.toString() + ' 🦘',
               style: TitleTextStyle,
             )
           ],
@@ -50,11 +63,11 @@ class ProfileScreen extends StatelessWidget {
           child: const Icon(Icons.home),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => PetScreen()));
+                .push(MaterialPageRoute(builder: (_) => const HomeScreen()));
           },
-          backgroundColor: Color(0xff584B53),
+          backgroundColor: PrimaryAccentColor,
           foregroundColor: Colors.white,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      );
+      ));
 }
