@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:petmo/models/user/user_details.dart';
 import 'package:petmo/screens/create/image_banner.dart';
-import 'package:petmo/screens/pet/pet_screen.dart';
+import 'package:petmo/screens/pet/home_screen.dart';
 
 import '../style.dart';
 
@@ -32,18 +33,34 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
           facebookLoginResult.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
-      await FirebaseFirestore.instance.collection('users').add({
-        'email': userData['email'],
-        'imageUrl': userData['picture']['data']['url'],
-        'name': userData['name'],
-      });
+      // Check if the user already exists in the database
+      bool existing = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.size >= 1);
+
+      if (existing) {
+        UserDetails.points = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('points'));
+        UserDetails.streak = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('streak'));
+      } else {
+        await FirebaseFirestore.instance.collection('users').add({
+          'email': userData['email'],
+          'imageUrl': userData['picture']['data']['url'],
+          'name': userData['name'],
+          'points': 0,
+          'streak': 0,
+          'token': await FirebaseMessaging.instance.getToken(),
+        });
+        UserDetails.points = 0;
+        UserDetails.streak = 0;
+      }
+
 
       UserDetails.name = userData['name'];
       UserDetails.email = userData['email'];
       UserDetails.profilePictureUrl = userData['picture']['data']['url'];
 
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => PetScreen()), (route) => false);
+          MaterialPageRoute(builder: (_) => HomeScreen()), (route) => false);
+      // await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value)
+      // => value.docs[0].reference.update(UserDetails.toMap()));
     } on FirebaseAuthException catch (exception) {
       String content = '';
       switch (exception.code) {
@@ -84,51 +101,51 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const ImageBanner('assets/images/logo_clear.jpg'),
-              !loading
-                  ? Column(children: [
-                      const SizedBox(height: 20),
-                      const Text('Connect With Facebook',
-                          style: Body1TextStyle),
-                      const SizedBox(height: 15),
-                      Center(
-                          child: GestureDetector(
-                        onTap: _loginWithFacebook,
-                        child: Container(
-                          height: 60,
-                          width: 120,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100.0),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Color(0x80000000),
-                                  blurRadius: 12.0,
-                                  offset: Offset(0.0, 5.0),
-                                ),
-                              ],
-                              gradient: const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  PrimaryAccentColor,
-                                  TertiaryAccentColor,
-                                ],
-                              )),
-                          child: const Center(
-                            child: Icon(Icons.facebook),
-                          ),
-                        ),
-                      ))
-                    ])
-                  : const CircularProgressIndicator(),
-            ],
-          ),
-        ),
-      );
+  Widget build(BuildContext context) => Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [SecondaryAccentColor, LightAccentColor])),
+          child: Scaffold(
+          body: Center(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+            const ImageBanner('assets/images/logo_clear.jpg'),
+            !loading
+                ? Column(children: [
+                    const SizedBox(height: 20),
+                    const Text('Connect With Facebook', style: Body1TextStyle),
+                    const SizedBox(height: 15),
+                    Center(
+                        child: GestureDetector(
+                            onTap: _loginWithFacebook,
+                            child: Container(
+                                height: 60,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Color(0x80000000),
+                                        blurRadius: 12.0,
+                                        offset: Offset(0.0, 5.0),
+                                      ),
+                                    ],
+                                    gradient: const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        PrimaryAccentColor,
+                                        TertiaryAccentColor,
+                                      ],
+                                    )),
+                                child: const Center(
+                                  child: Icon(Icons.facebook),
+                                ))))
+                  ])
+                : const CircularProgressIndicator(),
+          ]))));
 }
