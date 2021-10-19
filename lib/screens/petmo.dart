@@ -40,7 +40,7 @@ class Petmo extends StatelessWidget {
           screen = const HomeScreen();
           break;
         case WalkMapScreenRoute:
-          screen = const WalkMapScreen();
+          screen = const WalkMapScreen(fromNotification: false);
           break;
         default:
           return null;

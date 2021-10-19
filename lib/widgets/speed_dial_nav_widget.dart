@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:petmo/screens/feed/feed_screen.dart';
+import 'package:petmo/screens/play/play_screen_single.dart';
 import 'package:petmo/screens/style.dart';
 import 'package:petmo/screens/walk/walk_map_screen.dart';
 
@@ -32,25 +34,32 @@ class SpeedDialNavWidget extends StatelessWidget {
               labelBackgroundColor: Colors.white,
               labelStyle: Body1TextStyle,
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const WalkMapScreen()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) =>
+                        const WalkMapScreen(fromNotification: false)));
               }),
           SpeedDialChild(
-            child: const Icon(Icons.sports_baseball),
-            backgroundColor: Colors.white,
-            foregroundColor: PrimaryAccentColor,
-            label: 'Play',
-            labelBackgroundColor: Colors.white,
-            labelStyle: Body1TextStyle,
-          ),
+              child: const Icon(Icons.sports_baseball),
+              backgroundColor: Colors.white,
+              foregroundColor: PrimaryAccentColor,
+              label: 'Play',
+              labelBackgroundColor: Colors.white,
+              labelStyle: Body1TextStyle,
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => PlayScreenSingle()));
+              }),
           SpeedDialChild(
-            child: const Icon(Icons.food_bank_outlined),
-            backgroundColor: Colors.white,
-            foregroundColor: PrimaryAccentColor,
-            label: 'Feed',
-            labelBackgroundColor: Colors.white,
-            labelStyle: Body1TextStyle,
-          ),
+              child: const Icon(Icons.food_bank_outlined),
+              backgroundColor: Colors.white,
+              foregroundColor: PrimaryAccentColor,
+              label: 'Feed',
+              labelBackgroundColor: Colors.white,
+              labelStyle: Body1TextStyle,
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => FeedScreen()));
+              }),
         ],
       );
 }

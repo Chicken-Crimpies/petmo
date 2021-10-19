@@ -1,6 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-
 class UserDetails {
   static late final String name;
   static late final String profilePictureUrl;
@@ -15,7 +12,6 @@ class UserDetails {
     details.putIfAbsent('name', () => name);
     details.putIfAbsent('points', () => points);
     details.putIfAbsent('streak', () => streak);
-    details.putIfAbsent('token', () => FirebaseMessaging.instance.getToken());
     return details;
   }
 }

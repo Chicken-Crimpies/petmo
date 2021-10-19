@@ -7,6 +7,7 @@ import 'package:petmo/models/pet/pet.dart';
 import 'package:petmo/screens/create/pet_create_screen.dart';
 import 'package:petmo/screens/friends/friends_list_screen.dart';
 import 'package:petmo/screens/profile/profile_screen.dart';
+import 'package:petmo/screens/walk/walk_map_screen.dart';
 import 'package:petmo/services/local_notification_service.dart';
 import 'package:petmo/widgets/bottom_nav_widget.dart';
 
@@ -30,8 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
     initNotification();
     refreshPet();
   }
-
-
 
   @override
   void dispose() {
@@ -143,27 +142,49 @@ class _HomeScreenState extends State<HomeScreen> {
 
     ///gives you the message on which user taps and it opened the app from terminated state
     FirebaseMessaging.instance.getInitialMessage().then((message) {
-      if(message != null){
+      if (message != null) {
         final routeFromMessage = message.data["route"];
-        Navigator.of(context).pushNamed(routeFromMessage);
+        print('[LOG] ' + routeFromMessage);
+        switch (routeFromMessage) {
+          case '/walk':
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const WalkMapScreen(fromNotification: true)));
+            break;
+          default:
+            Navigator.of(context).pushNamed(routeFromMessage);
+            break;
+        }
       }
     });
 
-
     /// Foreground
     FirebaseMessaging.onMessage.listen((message) {
-      if (message.notification != null){
-        print(message.notification!.body);
-        print(message.notification!.title);
-      }
       LocalNotificationService.display(message);
+      final routeFromMessage = message.data["route"];
+      switch (routeFromMessage) {
+        case '/walk':
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => const WalkMapScreen(fromNotification: true)));
+          break;
+        default:
+          Navigator.of(context).pushNamed(routeFromMessage);
+          break;
+      }
     });
 
     /// When the app is in background but opened and user taps on the notification
     ///
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       final routeFromMessage = message.data["route"];
-      Navigator.of(context).pushNamed(routeFromMessage);
+      switch (routeFromMessage) {
+        case '/walk':
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => const WalkMapScreen(fromNotification: true)));
+          break;
+        default:
+          Navigator.of(context).pushNamed(routeFromMessage);
+          break;
+      }
     });
   }
 

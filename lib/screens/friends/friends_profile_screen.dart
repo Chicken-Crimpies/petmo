@@ -221,7 +221,7 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
         builder: (context) => AlertDialog(
             title: const Text('Notification Sent', style: TitleTextStyle),
             content: Text(
-              'Walk request sent to ' + widget.friend.name + '.',
+              'Feed reminder sent to ' + widget.friend.name + '.',
               style: Body1TextStyle,
             ),
             actions: [
@@ -249,7 +249,7 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
         builder: (context) => AlertDialog(
             title: const Text('Notification Sent', style: TitleTextStyle),
             content: Text(
-              'Walk request sent to ' + widget.friend.name + '.',
+              'Play reminder sent to ' + widget.friend.name + '.',
               style: Body1TextStyle,
             ),
             actions: [
