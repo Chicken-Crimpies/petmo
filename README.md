@@ -19,7 +19,8 @@
 ### Design Process
 - [Summary of the Problem Space](https://github.com/Chicken-Crimpies/petmo/wiki/Summary-of-Problem-Space)
 - [Process Overview](https://github.com/Chicken-Crimpies/petmo/wiki/Process-Overview)
-- [User Requirements](https://github.com/Chicken-Crimpies/petmo/wiki/Experience-Requirements)
+- [Designing for Location Dependence](https://github.com/Chicken-Crimpies/petmo/wiki/Designing-for-Location-Dependence)
+- [Experience Requirements](https://github.com/Chicken-Crimpies/petmo/wiki/Experience-Requirements)
 
 ### Prototypes & Evaluation
 - [User Stories](https://github.com/Chicken-Crimpies/petmo/wiki/User-Stories)
