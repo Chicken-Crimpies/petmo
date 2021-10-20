@@ -44,5 +44,4 @@
 - [Team Overview](https://github.com/Chicken-Crimpies/petmo/wiki/The-Team)
 
 ## Conference Poster & Promotional Material
-- [Conference Poster](): An informative display detailing the problem space, concept and design process the team adopted.
-- [Promotional Material](): A collection of promotional pieces serving to communicate the team’s idea and supplementing the conference poster.
+- [Material](https://github.com/Chicken-Crimpies/petmo/wiki)
