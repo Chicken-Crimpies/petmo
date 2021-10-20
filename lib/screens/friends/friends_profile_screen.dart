@@ -45,12 +45,13 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
         body: Center(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  const SizedBox(height: 40),
               Container(
                 constraints: const BoxConstraints.expand(
-                  height: 250.0,
-                  width: 250.0,
+                  height: 150.0,
+                  width: 150.0,
                 ),
                 decoration: const BoxDecoration(color: Colors.grey),
                 child: Image.network(
@@ -69,17 +70,17 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
               const SizedBox(height: 20),
               Text(
                 'Pet Care Streak: ' + widget.friend.streak.toString() + ' 🔥',
-                style: TitleTextStyle,
+                style: Body2TextStyle,
               ),
               const SizedBox(height: 20),
               Text(
                 'RSPCA Points: ' + widget.friend.points.toString() + ' 🦘',
-                style: TitleTextStyle,
+                style: Body2TextStyle,
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Currently active',
-                style: TitleTextStyle,
+              Text(
+                'Active ' + DateTime.now().difference(widget.friend.lastActivity).inMinutes.toString() + ' minutes ago',
+                style: Body2TextStyle,
               ),
               const SizedBox(height: 0),
               const SizedBox(
@@ -222,7 +223,7 @@ class _FriendsProfileScreenState extends State<FriendsProfileScreen> {
             title: const Text('Notification Sent', style: TitleTextStyle),
             content: Text(
               'Feed reminder sent to ' + widget.friend.name + '.',
-              style: Body1TextStyle,
+              style: Body2TextStyle,
             ),
             actions: [
               TextButton(

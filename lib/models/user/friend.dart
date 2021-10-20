@@ -5,6 +5,7 @@ class Friend {
   final int points;
   final int streak;
   final String token;
+  final DateTime lastActivity;
 
-  Friend({required this.email, required this.imageUrl, required this.name, required this.points, required this.streak, required this.token});
+  Friend({required this.email, required this.imageUrl, required this.name, required this.points, required this.streak, required this.token, required this.lastActivity});
 }

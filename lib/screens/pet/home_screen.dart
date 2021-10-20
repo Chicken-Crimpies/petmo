@@ -144,7 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
     FirebaseMessaging.instance.getInitialMessage().then((message) {
       if (message != null) {
         final routeFromMessage = message.data["route"];
-        print('[LOG] ' + routeFromMessage);
         switch (routeFromMessage) {
           case '/walk':
             Navigator.of(context).push(MaterialPageRoute(

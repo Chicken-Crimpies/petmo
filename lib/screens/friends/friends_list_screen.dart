@@ -22,8 +22,8 @@ class FriendsScreen extends StatelessWidget {
                     'imageUrl']), // no matter how big it is, it won't overflow
               ),
               title: Text(document['name']),
-              subtitle: const Text(
-                  "Pet Care Streak: 12🔥\nCurrently walking their pet"),
+              subtitle: Text(
+                  "Pet Care Streak: " + document['streak'].toString() + " 🔥\nActive " + (DateTime.now().difference(DateTime.parse(document['lastActivity']))).inMinutes.toString() + " minutes ago."),
               onTap: () {
                 Friend friend = Friend(
                   email: document['email'],
@@ -32,6 +32,7 @@ class FriendsScreen extends StatelessWidget {
                   points: document['points'],
                   streak: document['streak'],
                   token: document['token'],
+                  lastActivity: DateTime.parse(document['lastActivity']),
                 );
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => FriendsProfileScreen(friend: friend)));

@@ -37,8 +37,17 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
       bool existing = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.size >= 1);
 
       if (existing) {
+        String? token = await FirebaseMessaging.instance.getToken();
         UserDetails.points = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('points'));
         UserDetails.streak = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('streak'));
+        UserDetails.email = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('email'));
+        UserDetails.name = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('name'));
+        UserDetails.profilePictureUrl = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].get('imageUrl'));
+        Map<String, dynamic> tokenUpdate = UserDetails.toMap();
+        tokenUpdate.putIfAbsent('token', () => token);
+        DateTime activity = DateTime.now();
+        tokenUpdate.putIfAbsent('lastActivity', () => activity.toIso8601String());
+        await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: userData['email']).get().then((value) => value.docs[0].reference.set(tokenUpdate));
       } else {
         await FirebaseFirestore.instance.collection('users').add({
           'email': userData['email'],
@@ -47,11 +56,11 @@ class _FacebookLoginScreenState extends State<FacebookLoginScreen> {
           'points': 0,
           'streak': 0,
           'token': await FirebaseMessaging.instance.getToken(),
+          'lastActivity': DateTime.now().toIso8601String(),
         });
         UserDetails.points = 0;
         UserDetails.streak = 0;
       }
-
 
       UserDetails.name = userData['name'];
       UserDetails.email = userData['email'];

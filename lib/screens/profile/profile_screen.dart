@@ -27,11 +27,11 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Container(
               constraints: const BoxConstraints.expand(
-                height: 250.0,
-                width: 250.0,
+                height: 150.0,
+                width: 150.0,
               ),
               decoration: const BoxDecoration(color: Colors.grey),
               child: Image.network(
@@ -50,12 +50,17 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               'Pet Care Streak: ' + UserDetails.streak.toString() + ' 🔥',
-              style: TitleTextStyle,
+              style: Body2TextStyle,
             ),
             SizedBox(height: 20),
             Text(
               'RSPCA Points: ' + UserDetails.points.toString() + ' 🦘',
-              style: TitleTextStyle,
+              style: Body2TextStyle,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Next RSPCA 🔰 at 5000 points',
+              style: Body2TextStyle,
             )
           ],
         )),

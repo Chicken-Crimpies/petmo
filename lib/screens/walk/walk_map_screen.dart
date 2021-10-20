@@ -180,7 +180,7 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
               Colors.lightGreenAccent,
             ]);
       });
-      UserDetails.points += distance + duration;
+      UserDetails.points += distance + duration + 10;
       ActiveWalk.activeWalk.end(position);
     } else {
       if (widget.fromNotification) _handleNotificationPin();
@@ -223,7 +223,7 @@ class _WalkMapScreenState extends State<WalkMapScreen> {
                     duration.toString() +
                     ' Minutes\nDistance: ' +
                     distance.toString() +
-                    ' Meters\nPoints Earned: ' +  (distance + duration).toString(),
+                    ' Meters\nPoints Earned: ' +  (distance + duration + 10).toString(),
                 style: Body1TextStyle,
               ),
               actions: [

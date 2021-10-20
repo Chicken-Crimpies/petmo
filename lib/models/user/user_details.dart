@@ -1,7 +1,7 @@
 class UserDetails {
-  static late final String name;
-  static late final String profilePictureUrl;
-  static late final String email;
+  static late String name;
+  static late String profilePictureUrl;
+  static late String email;
   static late int points;
   static late int streak = 0;
 
@@ -12,6 +12,7 @@ class UserDetails {
     details.putIfAbsent('name', () => name);
     details.putIfAbsent('points', () => points);
     details.putIfAbsent('streak', () => streak);
+    details.putIfAbsent('lastActivity', () => DateTime.now().toIso8601String());
     return details;
   }
 }

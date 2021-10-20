@@ -11,7 +11,6 @@ class LocalNotificationService{
 
 
   static void initialize(BuildContext context){
-
     /// Change the string to change the icon that pops up
     final InitializationSettings initializationSettings =
     InitializationSettings(

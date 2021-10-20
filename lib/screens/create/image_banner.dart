@@ -9,8 +9,8 @@ class ImageBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints.expand(
-        height: 250.0,
-        width: 250.0,
+        height: 150.0,
+        width: 150.0,
       ),
       // decoration: const BoxDecoration(color: Colors.grey),
       child: Image.asset(
