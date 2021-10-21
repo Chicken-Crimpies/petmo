@@ -150,7 +150,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (_) => const WalkMapScreen(fromNotification: true)));
             break;
           default:
-            Navigator.of(context).pushNamed(routeFromMessage);
             break;
         }
       }
@@ -166,7 +165,6 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (_) => const WalkMapScreen(fromNotification: true)));
           break;
         default:
-          Navigator.of(context).pushNamed(routeFromMessage);
           break;
       }
     });
@@ -181,7 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (_) => const WalkMapScreen(fromNotification: true)));
           break;
         default:
-          Navigator.of(context).pushNamed(routeFromMessage);
           break;
       }
     });
