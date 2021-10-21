@@ -37,7 +37,6 @@
 - [Interview Process and Insights](https://github.com/Chicken-Crimpies/petmo/wiki/Interview-Process-and-Insights)
 - [Observational Research](https://github.com/Chicken-Crimpies/petmo/wiki/Observational-Research)
 - [Evaluation of Existing Solutions](https://github.com/Chicken-Crimpies/petmo/wiki/Evaluation-of-Existing-Solutions)
-- [Academic Studies and Published Research](https://github.com/Chicken-Crimpies/petmo/wiki/Academic-Studies-and-Published-Research)
 
 ### Other
 - [Contribution Guide](https://github.com/Chicken-Crimpies/petmo/wiki/Contribution-Guide)
